@@ -9,36 +9,74 @@ package withpackage;
  *
  * @author GULE NARJIS
  */
-public class Withprinciple {
-    class Food {
+class Food {
     private String name;
+    private double price;
 
-    public Food(String name) {
+    public Food(String name, double price) {
         this.name = name;
+        this.price = price;
     }
 
     public String getName() {
         return name;
     }
-}
-public class Order {
-    private String orderId;
-    private Food food; // Order "owns" Food
 
-    public Order(String orderId, String foodName) {
+    public double getPrice() {
+        return price;
+    }
+}
+
+class Customer {
+    private String customerId;
+    private String name;
+
+    public Customer(String customerId, String name) {
+        this.customerId = customerId;
+        this.name = name;
+    }
+
+    public String getName() { // ✅ Corrected method name
+        return name;
+    }
+
+    public void showCustomerInfo() {
+        System.out.println("Customer ID: " + customerId);
+        System.out.println("Customer Name: " + name);
+    }
+}
+class Order {
+    private String orderId;
+    private Food food;
+    private Customer customer;
+
+    public Order(String orderId, Food food, Customer customer) {
         this.orderId = orderId;
-        this.food = new Food(foodName); // Creator Principle Used
+        this.food = food;
+        this.customer = customer;
     }
 
     public void showOrderDetails() {
-        System.out.println("Order ID: " + orderId);
+        System.out.println("\nOrder ID: " + orderId);
         System.out.println("Food Ordered: " + food.getName());
+        System.out.println("Total Price: $" + food.getPrice());
+        System.out.println("Ordered by: " + customer.getName()); // ✅ Fixed getName()
     }
 }
-   public static void main(String[] args) {
-       Withprinciple outer = new Withprinciple(); // Create an instance of the outer class
-        Order order1 = outer.new Order("152", "Pizza");
+class OrderFactory {  // Creator Principle Applied 
+    public static Order createOrder(String orderId, Food food, Customer customer) {
+        return new Order(orderId, food, customer);
+    }
+}
+
+public class Withprinciple {
+    public static void main(String[] args) {
+        Food pizza = new Food("Pizza", 12.99);
+        Customer customer1 = new Customer("C001", "Ali Khan");
+        Order order1 = OrderFactory.createOrder("152", pizza, customer1); // Using OrderFactory to create order (Creator Principle)
+        customer1.showCustomerInfo();
         order1.showOrderDetails();
     }
-    
 }
+
+
