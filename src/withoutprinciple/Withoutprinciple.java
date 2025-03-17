@@ -30,6 +30,7 @@ public class Withoutprinciple {
     }
     
     class Food {
+        
         private String name;
         private double price;
     

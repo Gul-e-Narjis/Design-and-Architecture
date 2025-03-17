@@ -33,6 +33,6 @@ Imagine a fast-food restaurant like McDonald's, where all orders are automatical
 Customers can add/remove items, apply discounts, and track orders without rewriting the entire order manually.
 Conclusion
 The WithoutPrinciple version is basic and hard to maintain, while the WithPrinciple version follows Object-Oriented Programming (OOP)
-best practices, making it scalable, flexible, and efficient for real-world applications. 🚀
+best practices, making it scalable, flexible, and efficient for real-world applications. ?
 
 
