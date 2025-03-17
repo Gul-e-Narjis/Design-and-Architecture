@@ -36,7 +36,7 @@ class Customer {
         this.name = name;
     }
 
-    public String getName() { // ✅ Corrected method name
+    public String getName() { // 
         return name;
     }
 
@@ -60,7 +60,7 @@ class Order {
         System.out.println("\nOrder ID: " + orderId);
         System.out.println("Food Ordered: " + food.getName());
         System.out.println("Total Price: $" + food.getPrice());
-        System.out.println("Ordered by: " + customer.getName()); // ✅ Fixed getName()
+        System.out.println("Ordered by: " + customer.getName());
     }
 }
 class OrderFactory {  // Creator Principle Applied 
